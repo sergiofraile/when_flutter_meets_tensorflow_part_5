@@ -1,0 +1,25 @@
+name: handwriten_number_recognizer
+description: A handwriten number recognizer built with Flutter and Tensorflow.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^0.1.2
+  tflite: ^1.0.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/converted_mnist_model.tflite
+    - assets/labels.txt
