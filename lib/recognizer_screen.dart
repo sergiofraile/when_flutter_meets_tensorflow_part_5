@@ -34,8 +34,6 @@ class _RecognizerScreen extends State<RecognizerScreen> {
               ),
             ),
             Container(
-              padding: EdgeInsets.all(16),
-              color: Colors.green,
               decoration: new BoxDecoration(
                 border: new Border.all(
                   width: 3.0,
