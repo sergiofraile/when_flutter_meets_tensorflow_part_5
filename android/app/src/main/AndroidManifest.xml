@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sergiofraile.handwriten_number_recognizer">
+    package="com.sergiofraile.handwritten_number_recognizer">
 
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
@@ -8,7 +8,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="handwriten_number_recognizer"
+        android:label="handwritten_number_recognizer"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

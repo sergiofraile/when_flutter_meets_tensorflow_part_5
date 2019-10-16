@@ -1,4 +1,4 @@
-# handwriten_number_recognizer
+# handwritten_number_recognizer
 
 A new Flutter application.
 
