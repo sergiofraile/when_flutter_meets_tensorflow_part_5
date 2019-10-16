@@ -1,5 +1,5 @@
-name: handwriten_number_recognizer
-description: A handwriten number recognizer built with Flutter and Tensorflow.
+name: handwritten_number_recognizer
+description: A handwritten number recognizer built with Flutter and Tensorflow.
 
 version: 1.0.0+1
 

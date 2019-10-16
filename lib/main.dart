@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:handwriten_number_recognizer/recognizer_screen.dart';
+import 'package:handwritten_number_recognizer/recognizer_screen.dart';
 
-void main() => runApp(HandwritenNumberRecognizerApp());
+void main() => runApp(handwrittenNumberRecognizerApp());
 
-class HandwritenNumberRecognizerApp extends StatelessWidget {
+class handwrittenNumberRecognizerApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {

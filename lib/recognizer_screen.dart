@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:handwritten_number_recognizer/constants.dart';
+import 'package:handwritten_number_recognizer/drawing_painter.dart';
 
 class RecognizerScreen extends StatefulWidget {
   RecognizerScreen({Key key, this.title}) : super(key: key);
@@ -10,6 +12,8 @@ class RecognizerScreen extends StatefulWidget {
 }
 
 class _RecognizerScreen extends State<RecognizerScreen> {
+  List<Offset> points = List();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,10 +36,44 @@ class _RecognizerScreen extends State<RecognizerScreen> {
             Container(
               padding: EdgeInsets.all(16),
               color: Colors.green,
-              child: SizedBox(
-                width: 200,
-                height: 300,
-                child: Text('Canvas'),
+              decoration: new BoxDecoration(
+                border: new Border.all(
+                  width: 3.0,
+                  color: Colors.blue,
+                ),
+              ),
+              child: Builder(
+                builder: (BuildContext context) {
+                  return GestureDetector(
+                    onPanUpdate: (details) {
+                      setState(() {
+                        RenderBox renderBox = context.findRenderObject();
+                        points.add(
+                            renderBox.globalToLocal(details.globalPosition));
+                      });
+                    },
+                    onPanStart: (details) {
+                      setState(() {
+                        RenderBox renderBox = context.findRenderObject();
+                        points.add(
+                            renderBox.globalToLocal(details.globalPosition));
+                      });
+                    },
+                    onPanEnd: (details) {
+                      setState(() {
+                        points.add(null);
+                      });
+                    },
+                    child: ClipRect(
+                      child: CustomPaint(
+                        size: Size(kCanvasSize, kCanvasSize),
+                        painter: DrawingPainter(
+                          offsetPoints: points,
+                        ),
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
             Expanded(
