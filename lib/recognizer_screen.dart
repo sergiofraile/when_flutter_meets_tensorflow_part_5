@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:handwritten_number_recognizer/constants.dart';
 import 'package:handwritten_number_recognizer/drawing_painter.dart';
+import 'package:handwritten_number_recognizer/brain.dart';
 
 class RecognizerScreen extends StatefulWidget {
   RecognizerScreen({Key key, this.title}) : super(key: key);
@@ -13,6 +14,19 @@ class RecognizerScreen extends StatefulWidget {
 
 class _RecognizerScreen extends State<RecognizerScreen> {
   List<Offset> points = List();
+  AppBrain brain = AppBrain();
+
+  void _cleanDrawing() {
+    setState(() {
+      points = List();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    brain.loadModel();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +71,11 @@ class _RecognizerScreen extends State<RecognizerScreen> {
                             renderBox.globalToLocal(details.globalPosition));
                       });
                     },
-                    onPanEnd: (details) {
-                      setState(() {
-                        points.add(null);
-                      });
+                    onPanEnd: (details) async {
+                      points.add(null);
+                      List predictions = await brain.processCanvasPoints(points);
+                      print(predictions);
+                      setState(() {});
                     },
                     child: ClipRect(
                       child: CustomPaint(
@@ -85,6 +100,13 @@ class _RecognizerScreen extends State<RecognizerScreen> {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _cleanDrawing();
+        },
+        tooltip: 'Clean',
+        child: Icon(Icons.delete),
       ),
     );
   }

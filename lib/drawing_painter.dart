@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:handwritten_number_recognizer/constants.dart';
 
-final Paint drawingPaint = Paint()
-  ..strokeCap = StrokeCap.square
-  ..isAntiAlias = kIsAntiAlias
-  ..color = kBlackBrushColor
-  ..strokeWidth = kStrokeWidth;
-
 class DrawingPainter extends CustomPainter {
   DrawingPainter({this.offsetPoints});
   List<Offset> offsetPoints;
@@ -15,7 +9,7 @@ class DrawingPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     for (int i = 0; i < offsetPoints.length - 1; i++) {
       if (offsetPoints[i] != null && offsetPoints[i + 1] != null) {
-        canvas.drawLine(offsetPoints[i], offsetPoints[i + 1], drawingPaint);
+        canvas.drawLine(offsetPoints[i], offsetPoints[i + 1], kDrawingPaint);
       }
     }
   }
